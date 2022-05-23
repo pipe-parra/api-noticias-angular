@@ -7,7 +7,7 @@ import { NoticiaService } from './services/noticia.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  listNoticias: any[] = [];
+  listNoticias: any[] = []; //se debe corresponder con el del html
 
   constructor(private _noticiaService:NoticiaService){
 
