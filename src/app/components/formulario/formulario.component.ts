@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+// import { EventEmitter } from 'stream'; este es un error que se crea automaticamente al crear EventEmitter
 
 @Component({
   selector: 'app-formulario',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent implements OnInit {
+
+  @Output() parametrosSeleccionados = new EventEmitter<any>()
 
   categoriaSeleccionada = 'general';
   paisSeleccionado = 'ch';
@@ -36,8 +39,13 @@ export class FormularioComponent implements OnInit {
   }
 
   buscarNoticia(){
-    console.log(this.categoriaSeleccionada);
-    console.log(this.paisSeleccionado);
+     const PARAMETROS ={
+       categoria : this.categoriaSeleccionada,
+       pais : this.paisSeleccionado
+     }
+     this.parametrosSeleccionados.emit(PARAMETROS)
   }
+
+  
 
 }
